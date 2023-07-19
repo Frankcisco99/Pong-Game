@@ -21,6 +21,12 @@ paleta_der.shapesize(stretch_len=1,stretch_wid=5)
 paleta_der.penup()
 paleta_der.goto(250,0)
 
+balon = turtle.Turtle()
+balon.shape("circle")
+balon.color("#C1ECE4")
+balon.penup()
+balon.dx = 5
+balon.dy = -5
 def paleta_izq_up():
     y = paleta_izq.ycor()
     y = y + 20
@@ -49,6 +55,20 @@ pantalla.onkeypress(paleta_der_down,"Down")
 
 while True:
     pantalla.update()
+
+    balon.setx(balon.xcor() + balon.dx)
+    balon.sety(balon.ycor() + balon.dy)
+
+    if balon.ycor() > 144:
+        balon.sety(144)
+        balon.dy = balon.dy * -1
+    if balon.ycor() < -144:
+        balon.sety(-144)
+        balon.dy = balon.dy * -1
+    if balon.xcor() > 265:
+        balon.goto(0,0)
+    if balon.xcor() < -265:
+        balon.goto(0,0)    
 
     if paleta_izq.ycor() >= 145:
         paleta_izq.sety(145)
